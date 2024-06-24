@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link href="src/output.css" rel="stylesheet">
+  <title>Frontend Mentor | Intro section with dropdown navigation</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+    .menu-btn span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      margin: 5px auto;
+      background-color: black;
+      transition: all 0.3s ease-in-out;
+    }
+    .menu-btn.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-btn.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-btn.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+    .menu {
+      position: fixed;
+      top: 0;
+      right: -40vw; /* Hide the menu initially */
+      width: 40vw;
+      height: 100vh;
+      background-color: white;
+      transition: right 0.3s ease-in-out;
+      z-index: 1;
+    }
+    .menu.open {
+      right: 0; /* Slide in the menu */
+    }
+    .close-btn {
+      display: none;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+    }
+    .menu.open .close-btn {
+      display: block;
+    }
+    .dropdown-content {
+      display: none;
+      flex-direction: column;
+      margin-left: 20px;
+    }
+    .dropdown-content a {
+      margin-top: 5px;
+    }
+    .dropdown.open .dropdown-content {
+      display: flex;
+    }
+  </style>
+</head>
+<body class="bg-AlmostWhite">
+
+  <footer>
+    <div class="h-[10vh] w-full flex flex-row font-Epilogue items-center justify-between md:justify-between">
+      <div class="flex flex-row h-[60%] md:w-[70%] lg:w-[60%] xl:w-[50%] 2xl:w-[40%] justify-between ml-6 items-center  ">
+        <img src="images/logo.svg" alt="Logo">
+        <div class="hidden md:flex flex-row items-center w-[100%] justify-evenly font-bold text-[16px] text-MediumGray">
+          <button class="flex flex-row items-center p-2 rounded">
+            <p id="features-btn" class="mr-1">Features</p>
+            <img class="object-contain" src="images/icon-arrow-down.svg" alt="down-icon">
+          </button>
+          <button class="flex flex-row items-center p-2 rounded">
+            <p id="Company-btn" class="mr-1">Company</p>
+            <img class="object-contain" src="images/icon-arrow-down.svg" alt="up-icon">
+          </button>
+          <button>Careers</button>
+          <button>About</button>
+        </div>
+      </div>
+      <div class="hidden md:flex md:w-[30%] lg:w-[15%] flex-row items-center justify-evenly text-MediumGray">
+        <button>Login</button>
+        <button class="rounded-lg border-MediumGray border-2 h-[100%] w-24 py-1">Register</button>
+      </div>
+      <img id="menu-btn" class="menu-btn lg:hidden" src="images/icon-menu.svg" alt="menu icon">
+    </div>
+  </footer>
+
+  <div id="features-dropdown" class="hidden h-40 w-36 xl:top-20 absolute top-16 left-[10%] shadow-lg z-[1] flex flex-col justify-center pl-4 font-Epilogue text-sm text-MediumGray rounded-lg">
+    <button class="flex">
+      <img class="mr-3 object-contain" src="images/icon-todo.svg" alt="todo icon">
+      <p>Todo List</p>
+    </button>
+    <button class="flex mt-3">
+      <img class="mr-3 object-contain" src="images/icon-calendar.svg" alt="calendar icon">
+      <p>Calendar</p>
+    </button>
+    <button class="flex mt-3">
+      <img class="mr-3 object-contain" src="images/icon-reminders.svg" alt="reminder icon">
+      <p>Reminders</p>
+    </button>
+    <button class="flex mt-3">
+      <img class="mr-3 object-contain" src="images/icon-planning.svg" alt="planning icon">
+      <p>Planning</p>
+    </button>
+  </div>
+
+  <div id="Company-dropdown" class="hidden h-40 w-32 absolute top-16 left-[25%] shadow-lg z-[1] flex flex-col justify-evenly pl-4 font-Epilogue text-sm text-MediumGray rounded-lg">
+    <button class="flex">
+       History
+    </button>
+    <button class="flex">
+      Our Team
+   </button>
+   <button class="flex">
+    Blog
+ </button>
+  </div>
+
+  <!-- Menu -->
+  <div id="menu" class="menu md:hidden font-Epilogue flex flex-col items-start text-MediumGray font-medium pl-2 text-base">
+    <img id="close-btn" class="close-btn" src="images/icon-close-menu.svg" alt="close-icon">
+    <div class="dropdown">
+      <button class="flex flex-row items-center p-2 rounded mt-20 dropdown-btn">
+        <p class="mr-1">Features</p>
+        <img class="object-contain dropdown-icon" src="images/icon-arrow-down.svg" alt="down-icon">
+      </button>
+      <div class="dropdown-content flex justify-center">
+        <button class="flex">
+          <img class="mr-3 object-contain" src="images/icon-todo.svg" alt="todo icon">
+          <p>Todo List</p>
+        </button>
+        <button class="flex mt-3">
+          <img class="mr-3 object-contain" src="images/icon-calendar.svg" alt="calendar icon">
+          <p>Calendar</p>
+        </button>
+        <button class="flex mt-3">
+          <img class="mr-3 object-contain" src="images/icon-reminders.svg" alt="reminder icon">
+          <p>Reminders</p>
+        </button>
+        <button class="flex mt-3">
+          <img class="mr-3 object-contain" src="images/icon-planning.svg" alt="planning icon">
+          <p>Planning</p>
+        </button>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="flex flex-row items-center p-2 rounded dropdown-btn">
+        <p class="mr-1">Company</p>
+        <img class="object-contain dropdown-icon" src="images/icon-arrow-down.svg" alt="down-icon">
+      </button>
+      <div class="dropdown-content">
+        <a href="#">History</a>
+        <a href="#">Our Team</a>
+        <a href="#">Blog</a>
+      </div>
+    </div>
+    <button class="p-2">Careers</button>
+    <button class="p-2">About</button>
+  </div>
+
+
+  <main>
+    <div class="w-[100%] lg:w-[90%] xl:w-[70%] h-[90vh] md:h-[70vh] m-auto flex flex-col md:flex-row md:justify-around font-Epilogue text-AlmostBlack">
+      <div class="h-full w-[100%] md:w-[40%] flex order-last md:order-first flex-col  md:items-start">
+        <div class="h-full flex flex-col justify-center items-center md:items-start">
+          <h1 class="pl-10 text-6xl text-AlmostBlack font-bold text-responsive-lg">Make <br class="hidden md:inline"> remote work</h1>
+          <p class="pl-10 mt-[7%] font-medium text-responsive-sm">Get your team in sync, no matter your location.<br class="hidden xsm:inline"> Streamline processes, create team rituals, and <br class="hidden xsm:inline"> watch productivity soar.</p>
+          <button class="w-32 h-9 rounded-lg bg-black font-semibold text-white mt-[7%]  mx-auto lg:mx-0 lg:ml-10  text-sm ">Learn more</button>
+        </div>
+        <!-- -->
+        <div class="flex flex-row justify-between w-[100%] self-end h-10% mt-auto">
+          <img class="object-contain" src="images/client-databiz.svg" alt="databiz logo">
+          <img class="object-contain" src="images/client-audiophile.svg" alt="audiophile logo">
+          <img class="object-contain" src="images/client-meet.svg" alt="meet logo">
+          <img class="object-contain" src="images/client-maker.svg" alt="maker logo">
+        </div>
+      </div>
+      <div class="h-full w-full m-auto xsm:w-[70%] md:w-[40%] ">
+        <picture>
+          <source media="(min-width: 769px)" srcset="images/image-hero-desktop.png">
+          <img class="object-contain h-full w-full" src="images/image-hero-mobile.png" alt="hero-image">
+        </picture>
+        <!-- <img class="object-contain h-full w-full" src="images/image-hero-desktop.png" alt="hero-image"> -->
+      </div>
+    </div>
+  </main>
+
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+  <script src="/index.js"></script>
+</body>
+</html>
+
+<!-- Features
+  Company
+  Careers
+  About
+
+  Login
+  Register
+
+  Make remote work
+
+  Get your team in sync, no matter your location. Streamline processes, 
+  create team rituals, and watch productivity soar. -->
