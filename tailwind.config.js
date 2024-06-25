@@ -19,6 +19,7 @@ module.exports = {
         'responsive-sm': 'clamp(0.7rem, 2vw + 1rem, 0.9rem)',
       },
       screens: {
+        'xxs': '375px',
         'xsm': '500px',
         'sm': '640px',
         'md': '769px',

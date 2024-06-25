@@ -591,17 +591,16 @@ video {
   margin-right: auto;
 }
 
-.mx-0 {
-  margin-left: 0px;
-  margin-right: 0px;
-}
-
 .ml-6 {
   margin-left: 1.5rem;
 }
 
 .mr-1 {
   margin-right: 0.25rem;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
 }
 
 .mr-3 {
@@ -622,10 +621,6 @@ video {
 
 .mt-auto {
   margin-top: auto;
-}
-
-.ml-0 {
-  margin-left: 0px;
 }
 
 .block {
@@ -688,6 +683,10 @@ video {
   width: 100%;
 }
 
+.w-\[80\%\] {
+  width: 80%;
+}
+
 .w-full {
   width: 100%;
 }
@@ -702,10 +701,6 @@ video {
 
 .flex-col {
   flex-direction: column;
-}
-
-.place-items-center {
-  place-items: center;
 }
 
 .items-start {
@@ -728,16 +723,8 @@ video {
   justify-content: space-evenly;
 }
 
-.place-self-center {
-  place-self: center;
-}
-
 .self-end {
   align-self: flex-end;
-}
-
-.self-center {
-  align-self: center;
 }
 
 .rounded {
@@ -776,13 +763,18 @@ video {
   padding: 0.5rem;
 }
 
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
 }
 
-.pl-10 {
-  padding-left: 2.5rem;
+.pl-0 {
+  padding-left: 0px;
 }
 
 .pl-2 {
@@ -793,8 +785,8 @@ video {
   padding-left: 1rem;
 }
 
-.pl-0 {
-  padding-left: 0px;
+.pl-8 {
+  padding-left: 2rem;
 }
 
 .font-Epilogue {
@@ -869,29 +861,29 @@ video {
   transition-duration: 150ms;
 }
 
+@media (min-width: 375px) {
+  .xxs\:pl-0 {
+    padding-left: 0px;
+  }
+}
+
 @media (min-width: 500px) {
   .xsm\:inline {
     display: inline;
   }
 
-  .xsm\:w-\[70\%\] {
-    width: 70%;
+  .xsm\:justify-between {
+    justify-content: space-between;
+  }
+
+  .xsm\:pl-3 {
+    padding-left: 0.75rem;
   }
 }
 
 @media (min-width: 769px) {
   .md\:order-first {
     order: -9999;
-  }
-
-  .md\:mx-0 {
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-
-  .md\:mx-auto {
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .md\:inline {
@@ -930,10 +922,6 @@ video {
     align-items: flex-start;
   }
 
-  .md\:items-center {
-    align-items: center;
-  }
-
   .md\:justify-between {
     justify-content: space-between;
   }
@@ -967,10 +955,6 @@ video {
 
   .lg\:w-\[90\%\] {
     width: 90%;
-  }
-
-  .lg\:pl-0 {
-    padding-left: 0px;
   }
 
   .lg\:pl-10 {
